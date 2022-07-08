@@ -31,7 +31,7 @@ class LeCroyVISA(DSOConnection):
 
         rm = pyvisa.ResourceManager()
         resources = rm.list_resources()
-        if connection_string not in resources:
+        if 'TCPIP' not in connection_string and connection_string not in resources:
             raise DSOConnectionError('LeCroyVISA connection failed, {}'.format(connection_string))
             self.connected = False
             return
